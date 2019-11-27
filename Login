@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { SignUpService } from '../shared/services/signup.service'
+import { model1 } from '../model1';
+@Component({
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
+})
+export class SignUpComponent implements OnInit {
+  entries:any
+  signupform:any
+  constructor(private signupservice:SignUpService) { }
+
+  ngOnInit() {
+  }
+  signingup(signupvalues)
+  {
+    this.entries=this.signupservice.signup(signupvalues);
+  }
+  display()
+  {
+      window.alert('The system is successfully signing up the user');
+  }
+  
+
+}
