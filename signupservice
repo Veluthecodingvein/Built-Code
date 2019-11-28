@@ -1,0 +1,60 @@
+import { Injectable } from '@angular/core';
+import { model1 } from '../../model1';
+import { checkAndUpdateBinding } from '@angular/core/src/view/util';
+import { ifError } from 'assert';
+
+@Injectable({
+    providedIn:'root'
+})
+export class SignUpService{
+    Nameregis:model1[]   
+    i:number
+    ct:number=0;
+    constructor()
+    {
+
+    }
+    signupForm(signupvalues)
+    {
+        for(this.ct=0;this.ct<100;this.ct++)
+        {
+        this.Nameregis[this.ct].firstName=signupvalues.input1;
+        //this.Nameregis[this.ct].secondName=signupvalues.input2;
+        this.Nameregis[this.ct].lastName=signupvalues.input3;
+        this.Nameregis[this.ct].username=signupvalues.input4;
+        this.Nameregis[this.ct].password=signupvalues.input5;
+        //this.Nameregis.confirmpass=signupvalues.input6;
+        //this.Nameregis.age=signupvalues.input7;
+        //this.Nameregis.address=signupvalues.input8;
+        }
+    }
+    authenticate(signupvalues)
+    {
+        if((signupvalues.input1 && signupvalues.input3 && signupvalues.input4 && signupvalues.input5)!=Number)
+        {
+             if(signupvalues.input1[0]!=Number)    
+             {
+                 if(signupvalues.input3[0]!=Number)
+                 {
+                     return true;
+                 }
+             }
+        }
+    }
+    check(signupvalues)
+    {
+        for(this.i=0;this.i<100;this.i++)
+        {
+        if(signupvalues.input4==this.Nameregis[this.ct].username)
+        {
+            return true
+        }
+        } 
+    }
+    move1()
+    {
+        window.alert('Yes!Successfully Signed In');
+    }
+
+
+}
