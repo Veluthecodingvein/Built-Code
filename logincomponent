@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder,FormGroup, FormControl } from '@angular/forms';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { LoginService } from '../shared/services/login.service';
+import { Model2 } from '../model2';
+@Component({
+  selector: 'app-loggingin',
+  templateUrl: './loggingin.component.html',
+  styleUrls: ['./loggingin.component.scss']
+})
+export class LogginginComponent implements OnInit {
+  user
+  pass
+  emer
+  loginForm:any
+  constructor(private loginservice:LoginService)
+  {
+     
+  }
+  ngOnInit()
+   {
+
+   }
+   loggingin(formValues)
+   {
+      this.user=this.loginservice.addUser(formValues.username);
+      this.pass=this.loginservice.addPass(formValues.password);
+      this.emer=this.loginservice.addEmer(formValues.emergency)
+   }
+   loginafter()
+   {
+     //this.router.navigate(['/']
+   }
+   
+}
