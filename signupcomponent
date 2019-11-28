@@ -1,0 +1,40 @@
+import { Component, OnInit } from '@angular/core';
+import { SignUpService } from '../shared/services/signup.service'
+import { Router } from '@angular/router' ;
+import { model1 } from '../model1';
+//import { Nameregis } from '../shared/services/signup.service'
+@Component({
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
+})
+export class SignUpComponent implements OnInit {
+  entries:number=0;
+  signupform:any;
+  constructor(private signupservice:SignUpService) { }
+  Nameregis
+  ngOnInit() {
+  }
+  signingup(signupvalues)
+  {
+    this.signupservice.signupForm(signupvalues);
+    this.entries++;
+    /*this.entries.firstName=this.signupservice.signupForm(signupvalues);
+    this.entries.lastName=this.signupservice.signupForm(lastName;
+    this.entries.username=this.signupservice.Nameregis.username;
+    this.entries.password=this.signupservice.Nameregis.password;*/
+  }
+  display()
+  {
+     window.alert('User name is'+this.signupservice.Nameregis[--this.entries].firstName);
+     window.alert('Registered User:'+this.signupservice.Nameregis[--this.entries].firstName+'Last Name'+this.signupservice.Nameregis[--this.entries].lastName);
+  }
+
+ /* check(username,password)
+  {
+    if(this.signupservice.check(username,password))
+    {
+       this.router.navigate['/loggingin'];
+    }
+  }*/
+}
