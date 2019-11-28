@@ -1,0 +1,30 @@
+import { Injectable } from '@angular/core';
+import { providerDef } from '@angular/core/src/view'
+import { model1 } from 'src/app/model1';
+import { Model2 } from 'src/app/model2';
+
+@Injectable({
+  providedIn:'root'
+})
+export class LoginService{
+    loginparam:Model2
+    constructor()
+    {
+
+    }
+    addUser(user:any)
+    {
+        this.loginparam.user=user;
+    }
+    addPass(pass:any)
+    {
+        this.loginparam.pass=pass;
+    }
+    addEmer(emer:any)
+    {
+       this.loginparam.emerhint=emer;
+
+     }
+
+  }
+  
