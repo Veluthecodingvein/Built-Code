@@ -1,0 +1,60 @@
+ <sq-accordion class="accordionMain">
+  <sq-expansion-panel class="expansionMain" expanded="true" hideToggle><!-- style="width: 80%;"-->
+      <sq-expansion-panel-header class="exphead"> <!--expandedHeight="35% " collapsedHeight="35%"        -->
+        <sq-panel-title ><!--style="font-size: 18px;"-->
+          <div class="exphead1">
+            <span>ASSAYS</span>
+          <!--<span sqSuffix><i class="material-icons">list</i></span>-->
+          </div>
+        </sq-panel-title>
+        <sq-panel-description></sq-panel-description>
+       </sq-expansion-panel-header>
+       <sq-divider class="div1"></sq-divider>
+    <div class="tablediv">
+    <table mat-table [dataSource]="dataSource" class="maintable" matSort>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><span sqPrefix> ASSAY NAME </span></th>
+        <!--<sq-divider class="div2" style="width: 75%;"></sq-divider>     -->
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td> 
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ASSAY VENDOR</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ASSAY TECHNOLOGY </th>
+        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      </ng-container>
+      <!--Date Column-->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>DATE</th>
+        <td mat-cell *matCellDef="let element">{{ element.date | date:'dd/MM/yyyy'}}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>KIT NAME </th>
+        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      </ng-container>
+      <ng-container matColumnDef="bed">
+         <th mat-header-cell *matHeaderCellDef>BED</th>
+         <td mat-cell *matCellDef="let bd1"><i class="material-icons">file_copy</i></td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>ACTIONS</th>
+        <td mat-cell *matCellDef="let act1"><i class="material-icons">edit</i><span style="padding-right: 10px;"><i class="material-icons">cancel</i></span></td>
+      </ng-container>
+        
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="detail-row"></tr>
+  
+  
+ <!-- <th *ColumnHeaderCellDef></th>-->
+   </table>
+    </div>
+  <mat-paginator class="page" [length]="10" [pageSize]="5" [pageSizeOptions]="[5,10]" showFirstLastButtons></mat-paginator>
+  </sq-expansion-panel>
+ </sq-accordion>
