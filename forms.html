@@ -1,0 +1,36 @@
+<div class="masterDiv">
+  <div class="contentDiv">
+    <!-- <img class="sq-logo" src="../../assets/images/sq-logo.png" /> -->
+    <img class="sq-logo" [src]="lwInitializationService.lwIntializeModel.logoPath" (error)="lwInitializationService.lwIntializeModel.logoPath='assets/images/sq-logo.png';" />
+  </div>
+  <div class="contentDiv control-gap">
+    <form [formGroup]="loginForm" (ngSubmit)="authenticateUser()">
+      <div class="contentDiv control-gap" [ngClass]="{'errorPlaceholder' : loginForm.controls.userName.invalid && loginForm.controls.userName.touched}">
+        <sq-form-field floatLabel="auto" appearance="outline" class="input-width user">
+          <input sqInput #uName type="text" placeholder="User Name" [tabIndex]="userNameTabIndex" id="orm-login-userName"
+             maxlength="100" (keypress)="usernameKeyDown($event)" formControlName="userName"
+            required />
+          <sq-icon sqSuffix class="icon-color" [ngClass]="{'errorIcon' : loginForm.controls.userName.invalid && loginForm.controls.userName.touched}" id= 'orm-login-person'><i class="fas fa-user-alt"></i></sq-icon>
+        </sq-form-field>
+      </div>
+      <div class="contentDiv pass-input" [ngClass]="{'errorPlaceholder' : loginForm.controls.password.invalid && loginForm.controls.password.touched}">
+        <sq-form-field floatLabel="auto" appearance="outline" class="input-width password">
+          <input sqInput #pWord type="password" placeholder="Password" [tabIndex]="passwordTabIndex" maxlength="100"
+             (keypress)="passwordKeyDown($event)" id="orm-login-password"
+            id="orm-login-password" formControlName="password" required />
+          <sq-icon sqSuffix class="icon-color" [ngClass]="{'errorIcon' : loginForm.controls.password.invalid && loginForm.controls.password.touched}" id= 'orm-login-lock'><i class="fas fa-lock"></i></sq-icon>
+        </sq-form-field>
+      </div>
+      <span class="contentDiv">
+        <sq-hint align="start" class='hintText'>{{passwordValidationMessage}}</sq-hint>
+      </span>
+      <div class="contentDiv ">
+        <sq-button variant="flat-button" type="submit" class="login-button" id="orm-login-loginButton"
+          [tabOrder]="loginButtonTabIndex">LOGIN</sq-button>
+      </div>
+    </form>
+  </div>
+</div>
+<sq-progress-spinner color="primary" mode="indeterminate" diameter="100" strokeWidth="10" backdropEnabled="true"
+  [displayProgressSpinner]="getProgressSpinner()">
+</sq-progress-spinner>
