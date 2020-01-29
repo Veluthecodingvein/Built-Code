@@ -1,0 +1,58 @@
+<div class="patient-container">
+<sq-accordion>
+  <sq-expansion-panel class="sq-elevation-z1" expanded="true" hideToggle collapsedHeight="10%">
+      <sq-expansion-panel-header class="expansionhead"> 
+        <sq-panel-title ><!--style="font-size: 18px;"-->
+            ASSAYS
+             <span class="rightspacing"><a [sqPopoverAnchorFor]="pop"><i onclick="pop.toggle()" class="fas fa-ellipsis-v"></i></a></span>
+        </sq-panel-title>
+        <sq-panel-description>
+          <sq-divider class="divider"></sq-divider>
+        </sq-panel-description>
+       </sq-expansion-panel-header>
+    <div class="tablediv">
+    <sq-table [dataSource]="dataSource" class="maintable" sqSort>
+      <ng-container sqColumnDef="position">
+        <sq-header-cell *sqHeaderCellDef sq-sort-header><span sqPrefix> ASSAY NAME </span></sq-header-cell>
+        <!--<sq-divider class="div2" style="width: 75%;"></sq-divider>     -->
+        <sq-cell *sqCellDef="let element">{{element.position}} </sq-cell> 
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container sqColumnDef="name">
+        <sq-header-cell *sqHeaderCellDef sq-sort-header>ASSAY VENDOR</sq-header-cell>
+        <sq-cell *sqCellDef="let element"> {{element.name}} </sq-cell>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container sqColumnDef="weight">
+        <sq-header-cell *sqHeaderCellDef sq-sort-header>ASSAY TECHNOLOGY</sq-header-cell>
+        <sq-cell *sqCellDef="let element"> {{element.weight}} </sq-cell>
+      </ng-container>
+      <!-- <ng-container id="col4" sqColumnDef="date">
+        <th sq-header-cell *sqHeaderCellDef sq-sort-header>DATE</th>
+        <td sq-cell *sqCellDef="let element">{{ element.date | date:'MM/dd/yyyy'}}</td>
+      </ng-container> -->
+      <!-- Symbol Column -->
+      <ng-container sqColumnDef="symbol">
+        <sq-header-cell *sqHeaderCellDef sq-sort-header>KIT NAME </sq-header-cell>
+        <sq-cell *sqCellDef="let element"> {{element.symbol}} </sq-cell>
+      </ng-container>
+      <ng-container sqColumnDef="bed">
+         <sq-header-cell *sqHeaderCellDef>BED</sq-header-cell>
+         <sq-cell *sqCellDef="let bd1"><i class="fas fa-file"></i></sq-cell> <!--<i class="sqerial-icons">file_copy</i>-->
+      </ng-container>
+      <ng-container sqColumnDef="action">
+        <sq-header-cell *sqHeaderCellDef>ACTIONS</sq-header-cell>
+        <sq-cell *sqCellDef="let act1"><i class="fas fa-edit"></i><span class="sidespace"><i class="fas fa-times-circle"></i></span></sq-cell>   <!--<i class="sqerial-icons">edit</i><i class="sqerial-icons">cancel</i></span>-->
+      </ng-container>   
+  <sq-header-row *sqHeaderRowDef="displayedColumns"></sq-header-row>
+  <sq-row *sqRowDef="let row; columns: displayedColumns;" class="detail-row"></sq-row>
+  
+   </sq-table>
+   <sq-paginator [length]="10" [pageSize]="5" [pageSizeOptions]="[5,10,15]"></sq-paginator>
+   </div>
+  </sq-expansion-panel>
+ </sq-accordion>
+ </div>
+
