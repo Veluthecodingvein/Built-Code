@@ -1,0 +1,107 @@
+
+<mat-toolbar style="background-color: #0073c6;">
+
+    <mat-toolbar-row class="headerstyle">
+        <span>CREATE FILTER RESULTS DISPLAY CONFIGURATION</span>
+        <span class="example-spacer"></span>
+    </mat-toolbar-row>
+    
+</mat-toolbar>
+
+<div style="padding: 20px;">
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Name" value="">
+    </mat-form-field>
+
+      <div style="margin: 15px 0;">
+        <mat-checkbox>Is Default</mat-checkbox>
+      </div>
+    
+</form>
+</div>
+
+<mat-toolbar style="background-color: #0073c6;">
+
+    <mat-toolbar-row class="headerstyle">
+        <span>FILTER TABLE FIELDS SELECTION</span>
+        <span class="example-spacer"></span>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="padding: 10px;">
+<div style="margin: 10px; color: #aaa">Drag items from one list to the other. Within the same list, you can reorder items by drag&drop too.</div>
+
+<mat-toolbar style="background-color: #80bb01; margin-top: 20px;">
+
+    <mat-toolbar-row class="headerstyle">
+        <span>LIST OF VARIANT FIELDS</span>
+        <span class="example-spacer"></span>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="headerstyle">
+        <span>SELECTED VARIANT FIELDS</span>
+        <span class="example-spacer"></span>
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+<div class="main-container">
+<div class="example-container">
+  <!-- <h2>To do</h2> -->
+
+  <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="data" [cdkDropListConnectedTo]="[doneList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of data" cdkDrag>{{item.name}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <!-- <h2>Done</h2> -->
+
+  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.name}}</div>
+  </div>
+</div>
+</div>
+
+<!-- concepts -->
+
+<mat-toolbar style="background-color: #80bb01; margin-top: 20px;">
+
+    <mat-toolbar-row class="headerstyle">
+        <span>{{ list | uppercase}}</span>
+        <span class="example-spacer"></span>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="headerstyle">
+        <span>Selected Annotation Definition Fields</span>
+        <span class="example-spacer"></span>
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+<div class="main-container">
+<div class="example-container">
+  <!-- <h2>To do</h2> -->
+
+  <div cdkDropList #todoList1="cdkDropList" [cdkDropListData]="available" [cdkDropListConnectedTo]="[doneList1]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of available" cdkDrag>{{item}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <!-- <h2>Done</h2> -->
+
+  <div cdkDropList #doneList1="cdkDropList" [cdkDropListData]="doneConcepts" [cdkDropListConnectedTo]="[todoList1]"
+    class="example-list" (cdkDropListDropped)="dropConcepts($event)">
+    <div class="example-box" *ngFor="let item of doneConcepts" cdkDrag>{{item}}</div>
+  </div>
+</div>
+</div>
+
+
+</div>
